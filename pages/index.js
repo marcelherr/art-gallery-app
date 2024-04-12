@@ -9,9 +9,5 @@ export default function HomePage() {
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
 
-  return (
-    <div>
-      <ArtPieces pieces={data} />
-    </div>
-  );
+  return <ArtPieces pieces={data} />;
 }
