@@ -11,7 +11,10 @@ export default createGlobalStyle`
     margin: 0;
     font-family: system-ui;
   }
-  ul{
+
+  ul {
     list-style: none;
+    padding: 0;
+    margin: 1rem;
   }
 `;
