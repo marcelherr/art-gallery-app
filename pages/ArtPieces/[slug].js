@@ -21,6 +21,8 @@ export default function ArtPieces({ data }) {
     return null;
   }
 
+  const { image, title, artist, year, genre } = data;
+
   return (
     <div>
       <ArtPieceDetails
