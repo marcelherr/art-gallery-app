@@ -1,6 +1,8 @@
 import Spotlight from "@/components/Spotlight";
 
-export default function SpotlightPage({ data }) {
+const URL = "https://example-apis.vercel.app/api/art";
+
+export default function HomePage({ data }) {
   return (
     <>
       <Spotlight data={data} />

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { StyledImage } from "./StyledImage";
 
 export default function Spotlight({ data }) {
   const randomIndex = Math.floor(Math.random() * (data.length - 1) + 0);
@@ -6,11 +6,12 @@ export default function Spotlight({ data }) {
 
   return (
     <article>
-      <Image
+      <StyledImage
         src={spotlightPiece.imageSource}
         alt="art-piece"
         width={240}
-        height={130}
+        height={160}
+        layout="responsive"
       />
       <h3>{spotlightPiece.artist}</h3>
     </article>
