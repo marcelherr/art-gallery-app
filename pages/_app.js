@@ -3,6 +3,7 @@ import { SWRConfig } from "swr";
 import useSWR from "swr";
 import Layout from "@/components/Layout";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 const fetcher = async (url) => {
   const response = await fetch(url);
@@ -21,17 +22,28 @@ const fetcher = async (url) => {
   }
 };
 
-export default function App({ Component, pageProps }) {
-  const Main = styled.main`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  `;
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
+export default function App({ Component, pageProps }) {
   const { data, error, isLoading } = useSWR(
     "https://example-apis.vercel.app/api/art",
     fetcher
   );
+
+  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
+  useEffect(() => {
+    if (data) {
+      const artPiecesInfo = data.map((piece) => {
+        return { slug: piece.slug, isFavorite: false };
+      });
+      console.log(artPiecesInfo);
+      setArtPiecesInfo(artPiecesInfo);
+    }
+  }, [data]);
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
@@ -45,7 +57,7 @@ export default function App({ Component, pageProps }) {
         }}
       >
         <Main>
-          <Component {...pageProps} data={data} />
+          <Component {...pageProps} data={data} artPiecesInfo={artPiecesInfo} />
           <Layout></Layout>
         </Main>
       </SWRConfig>
