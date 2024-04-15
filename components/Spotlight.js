@@ -1,4 +1,5 @@
 import { StyledImage } from "./StyledImage";
+import FavoriteButton from "./FavoriteButton";
 
 export default function Spotlight({ data }) {
   const randomIndex = Math.floor(Math.random() * (data.length - 1) + 0);
