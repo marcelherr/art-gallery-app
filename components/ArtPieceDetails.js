@@ -1,5 +1,7 @@
 import { StyledImage } from "./StyledImage";
 import styled from "styled-components";
+import { ArtPieceContainer } from "./ArtPieceContainer";
+import { useRouter } from "next/router";
 
 const StyledButton = styled.button`
   background-color: #0a0a23;
@@ -11,12 +13,9 @@ const StyledButton = styled.button`
   min-width: 120px;
 `;
 
-const ArtPieceContainer = styled.article`
-  width: var(--width-wrapper);
-  padding: 0 0 5rem 0;
-`;
-
 export default function ArtPieceDetails({ image, title, artist, year, genre }) {
+  const router = useRouter();
+
   return (
     <ArtPieceContainer>
       <h1>{title}</h1>
