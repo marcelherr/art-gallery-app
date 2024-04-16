@@ -2,7 +2,11 @@ import Spotlight from "@/components/Spotlight";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
-export default function HomePage({ data, artPiecesInfo, onToggleFavorite }) {
+export default function SpotlightPage({
+  data,
+  artPiecesInfo,
+  onToggleFavorite,
+}) {
   return (
     <>
       <Spotlight

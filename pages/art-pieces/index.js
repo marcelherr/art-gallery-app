@@ -5,8 +5,6 @@ const ArtPieceContainer = styled.article`
   width: var(--width-wrapper);
 `;
 
-export default function SpotlightPage({ data, artPiecesInfo }) {
-  console.log(artPiecesInfo);
-  console.log(artPiecesInfo);
-  return <ArtPieces pieces={data} artPiecesInfo={artPiecesInfo} />;
+export default function ArtPiecePage({ data }) {
+  return <ArtPieces pieces={data} />;
 }
