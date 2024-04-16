@@ -5,6 +5,16 @@ const ArtPieceContainer = styled.article`
   width: var(--width-wrapper);
 `;
 
-export default function ArtPiecePage({ data }) {
-  return <ArtPieces pieces={data} />;
+export default function ArtPiecePage({
+  data,
+  artPiecesInfo,
+  onToggleFavorite,
+}) {
+  return (
+    <ArtPieces
+      pieces={data}
+      artPiecesInfo={artPiecesInfo}
+      onToggleFavorite={onToggleFavorite}
+    />
+  );
 }

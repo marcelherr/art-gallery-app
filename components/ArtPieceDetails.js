@@ -1,5 +1,8 @@
 import { StyledImage } from "./StyledImage";
 import styled from "styled-components";
+import { ArtPieceContainer } from "./ArtPieceContainer";
+import { useRouter } from "next/router";
+import FavoriteButton from "./FavoriteButton";
 
 const StyledButton = styled.button`
   background-color: #0a0a23;
@@ -11,23 +14,43 @@ const StyledButton = styled.button`
   min-width: 120px;
 `;
 
-const ArtPieceContainer = styled.article`
-  width: var(--width-wrapper);
-  padding: 0 0 5rem 0;
+const Div = styled.div`
+  position: relative;
 `;
 
-export default function ArtPieceDetails({ image, title, artist, year, genre }) {
+export default function ArtPieceDetails({
+  image,
+  title,
+  artist,
+  year,
+  genre,
+  artPiecesInfo,
+  onToggleFavorite,
+  slug,
+}) {
+  const router = useRouter();
+  const pieceInfo = artPiecesInfo.find(
+    (artPieceInfo) => artPieceInfo.slug === slug
+  );
+  const isFavorite = pieceInfo && pieceInfo.isFavorite === true ? true : false;
   return (
     <ArtPieceContainer>
       <h1>{title}</h1>
       <h3>{year}</h3>
-      <StyledImage
-        src={image}
-        alt="art-piece"
-        width={240}
-        height={160}
-        layout="responsive"
-      />
+      <Div>
+        <StyledImage
+          src={image}
+          alt="art-piece"
+          width={240}
+          height={160}
+          layout="responsive"
+        />
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggleFavorite={onToggleFavorite}
+          slug={slug}
+        ></FavoriteButton>
+      </Div>
       <h2>{artist}</h2>
       <p> {genre}</p>
       <StyledButton
