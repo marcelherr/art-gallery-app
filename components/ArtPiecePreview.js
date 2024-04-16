@@ -1,6 +1,7 @@
 import { StyledImage } from "./StyledImage";
+import FavoriteButton from "./FavoriteButton";
 
-export default function ArtPiecePreview({ image, title, artist }) {
+export default function ArtPiecePreview({ image, title, artist, isFavorite }) {
   return (
     <article>
       <h2>{title}</h2>
@@ -12,6 +13,7 @@ export default function ArtPiecePreview({ image, title, artist }) {
         layout="responsive"
       />
       <h3>{artist}</h3>
+      <FavoriteButton isFavorite={isFavorite}></FavoriteButton>
     </article>
   );
 }

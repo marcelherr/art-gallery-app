@@ -1,9 +1,10 @@
 import { StyledImage } from "./StyledImage";
 import FavoriteButton from "./FavoriteButton";
 
-export default function Spotlight({ data }) {
+export default function Spotlight({ data, artPiecesInfo, onToggleFavorite }) {
   const randomIndex = Math.floor(Math.random() * (data.length - 1) + 0);
   const spotlightPiece = data[randomIndex];
+  const spotlightPieceInfo = artPiecesInfo[randomIndex];
 
   return (
     <article>
@@ -15,6 +16,10 @@ export default function Spotlight({ data }) {
         layout="responsive"
       />
       <h3>{spotlightPiece.artist}</h3>
+      <FavoriteButton
+        onClick={() => onToggleFavorite()}
+        // isFavorite={spotlightPieceInfo.isFavorite}
+      ></FavoriteButton>
     </article>
   );
 }
